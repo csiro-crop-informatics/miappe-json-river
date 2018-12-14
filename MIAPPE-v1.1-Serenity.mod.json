@@ -1,0 +1,711 @@
+{
+	"name": "Minimum Information About a Plant Phenotyping Experiment",
+	"abbr": "MIAPPE",
+	"description": "A checklist for description of plant phenotyping experiments",
+	"version": "v1.1-rfc",
+	"models": [
+		{
+			"name": "Experiment",
+			"definition": "An experiment definition",
+			"attributes": [
+				{
+					"name": "ExpID",
+					"label": "Experiment unique ID",
+					"definition": "Unique identifier comprising the name or identifier for the institution/database hosting the submission of the experiment data, and the identifier of the experiment in that institution.",
+					"example": "EBI:12345678, http://phenome-fppn.fr/maugio/2013/t2351",
+					"format": "Unique identifier"
+				},
+				{
+					"name": "ExpTitle",
+					"label": "Experiment title",
+					"definition": "Human-readable text summarising the experiment",
+					"example": "2002 evaluation of flowering time for a panel of 375 maize lines at the experimental station of Maugio (France). ",
+					"format": "Free text (short)",
+					"required": true
+				},
+				{
+					"name": "Description",
+					"label": "Experiment description",
+					"definition": "Human-readable text describing the experiment",
+					"example": "2002 evaluation of male and female flowering time for a panel of 375 maize lines representing the worldwide genetic diversity at the experimental station of Maugio, France. ",
+					"format": "Free text"
+				},
+				{
+					"name": "StartDate",
+					"label": "Start date of experiment",
+					"definition": "Date and, if relevant, time when the experiment started",
+					"example": "2002-04-04; 2006-09-27T10:23:21+00:00",
+					"format": "Date/Time (ISO 8601, optional time zone)",
+					"required": true
+				},
+				{
+					"name": "EndDate",
+					"label": "End date of experiment",
+					"definition": "Date and, if relevant, time when the experiment ended",
+					"example": "2002-11-27",
+					"format": "Date/Time (ISO 8601, optional time zone)"
+				},
+				{
+					"name": "Institution",
+					"label": "Contact institution",
+					"definition": "Name and address of the institution responsible for the experiment.",
+					"example": "UMR de Génétique Végétale, INRA – Université Paris-Sud – CNRS, Gif-sur-Yvette, France",
+					"format": "Free text (short)",
+					"required": true
+				},
+				{
+					"name": "Country",
+					"label": "Geographic location (country)",
+					"definition": "The country where the experiment took place, either as a full name or preferably as a 2-letter code.",
+					"example": "FR",
+					"format": "Country name or 2-letter code (ISO 3166)",
+					"required": true
+				},
+				{
+					"name": "Site",
+					"label": "Experimental site name",
+					"definition": "The name of the natural site, experimental field, greenhouse, phenotyping facility, etc. where the experiment took place.",
+					"example": "INRA, UE Diascope - Chemin de Mezouls - Domaine expérimental de Melgueil - 34130 Mauguio - France",
+					"format": "Free text (short)",
+					"required": true
+				},
+				{
+					"name": "Latitude",
+					"label": "Geographic location (latitude)",
+					"definition": "Latitude of the experimental site in degrees, in decimal format.",
+					"example": "+43.619264",
+					"format": "Degrees in the decimal format (ISO 6709)"
+				},
+				{
+					"name": "Longitude",
+					"label": "Geographic location (longitude)",
+					"definition": "Longititute of the experimental site in degrees, in decimal format.",
+					"example": "+3.967454",
+					"format": "Degrees in the decimal format (ISO 6709)"
+				},
+				{
+					"name": "Altitude",
+					"label": "Geographic location (altitude)",
+					"definition": "Altitude of the experimental site, preferably provided in metres (m).",
+					"example": "100m",
+					"format": "Numeric"
+				},
+				{
+					"Persons": [{ "$ref": "#/models/Person" }]
+				},
+				{
+					"MiappeExp": { "$ref": "#/models/MiappeExp" }
+				}
+			]
+		},
+		{
+			"name": "MiappeExp",
+			"definition": "A MIAPPE standard plant phenotyping experiment, comprising a series of assays (or measurements) of one or more types, undertaken to answer a particular biological question.",
+			"attributes": [
+				{
+					"name": "StatisticalDesign",
+					"label": "Description of statistical design",
+					"definition": "Short description of the statistical design.",
+					"example": "Lines were repeated twice at each location using a complete block design. In order to limit competition effects, each block was organized into four sub-blocks corresponding to earliness groups based on a priori information. https://urgi.versailles.inra.fr/files/ephesis/181000503/181000503_plan.xls",
+					"format": "Free text",
+					"required": true
+				},
+				{
+					"name": "StatisticalDesignType",
+					"label": "Type of statistical design",
+					"definition": "Type of statistical design of the experiment, in the form of an accession number from the Crop Ontology.",
+					"example": "CO_715:0000145",
+					"format": "Crop Ontology term (subclass of CO_715:0000003)"
+				},
+				{
+					"name": "ObsUnitHierarchy",
+					"label": "Observation unit level hierarchy",
+					"definition": "Hierarchy of the different levels of repetitions between each others",
+					"example": "block>rep>plot",
+					"format": "Formatted text (level>level)"
+				},
+				{
+					"name": "ObsUnitDescription",
+					"label": "Observation unit description",
+					"definition": "General description of the observation units in the experiment.",
+					"example": "Observation units consisted in individual plots themselves consisting of a row of 15 plants at a density of approximately six plants per square meter",
+					"format": "Free text",
+					"required": true
+				},
+				{
+					"name": "GrowthFacilityDesc",
+					"label": "Description of growth facility",
+					"definition": "Short description of the facility in which the experiment was carried out.",
+					"example": "field environment condition",
+					"format": "Free text (short)",
+					"required": true
+				},
+				{
+					"name": "GrowthFacilityType",
+					"label": "Type of growth facility",
+					"definition": "Type of growth facility in which the experiment was carried out, in the form of an accession number from the Crop Ontology.",
+					"example": "CO_715:0000162",
+					"format": "Crop Ontology term (subclass of CO_715:0000005)"
+				},
+				{
+					"name": "CulturalPractices",
+					"label": "Cultural practices",
+					"definition": "General description of the cultural practices of the experiment.",
+					"example": "Irrigation was applied according needs during summer to prevent water stress.",
+					"format": "Free text"
+				},
+				[
+					{
+						"name": "ExpDesignMap",
+						"label": "Map of experimental design",
+						"definition": "Representation of the experimental design.",
+						"example": "",
+						"format": "gis or excel file"
+					}
+				],
+				{
+					"DataFiles": [{ "$ref": "#/models/DataFile" }]
+				},
+				{
+					"BioMaterials": [{ "$ref": "#/models/BioMaterial" }],
+					"required": true
+				},
+				{
+					"EnviroParams": [{ "$ref": "#/models/EnviroParam" }]
+				},
+				{
+					"Factors": [{ "$ref": "#/models/Factor" }]
+				},
+				{
+					"Events": [{ "$ref": "#/models/Event" }]
+				},
+				{
+					"ObsUnits": [{ "$ref": "#/models/ObsUnit" }],
+					"required": true
+				},
+				{
+					"ObsVariables": [{ "$ref": "#/models/ObsVariable" }],
+					"required": true
+				}
+			]
+		},
+		{
+			"name": "Person",
+			"definition": "A human involved in a project/experiment.",
+			"attributes": [
+				{
+					"name": "Name",
+					"label": "Person name",
+					"definition": "The name of the person (either full name or as used in scientific publications)",
+					"example": "Ines Chaves",
+					"format": "Name",
+					"required": true
+				},
+				{
+					"name": "PersonID",
+					"label": "Person ID",
+					"definition": "An identifier for the data submitter. If that submitter is an individual, ORCID identifiers are recommended.",
+					"example": "orcid.org/0000-0001-6494-0008; orcid.org/0000-0002-7054-800X",
+					"format": "Unique identifier"
+				},
+				[
+					{
+						"name": "Email",
+						"label": "Person email",
+						"definition": "The electronic mail address of the person.",
+						"example": "ichaves@itqb.unl.pt",
+						"format": "email address"
+					}
+				],
+				[
+					{
+						"name": "Role",
+						"label": "Person role",
+						"definition": "Type of contribution of the person to the investigation",
+						"example": "data submitter; author; corresponding author",
+						"format": "Free text (short)"
+					}
+				],
+				[
+					{
+						"name": "Affiliation",
+						"label": "Person affiliation",
+						"definition": "The institution the person belongs to",
+						"example": "ITQB, Portugal",
+						"format": "Free text (short)"
+					}
+				]
+			]
+		},
+		{
+			"name": "DataFile",
+			"label": "Data File",
+			"definition": "A file or digital object holding observation data recorded during one or more assays of the experiment, typically in tabular form. Multiple data files may be provided per experiment, and each file can include observations for several observation units and several observed variables.",
+			"attributes": [
+				{
+					"name": "FileLink",
+					"label": "Data file link",
+					"definition": "Link to the data file (or digital object) in a public database or institutional repository; or identifier of the data file when submitted together with the MIAPPE submission.",
+					"example": "http://www.ebi.ac.uk/arrayexpress/experiments/E-GEOD-32551/",
+					"format": "URL or File name",
+					"required": true
+				},
+				{
+					"name": "FileDesc",
+					"label": "Data file description",
+					"definition": "Description of the format of the data file. May be a standard file format name, or a description of organization of the data in a tabular file.",
+					"example": "FASTA; tab-delineated, column headers headers: 1. A 2. B 3. C",
+					"format": "Free text (short)",
+					"required": true
+				},
+				{
+					"name": "FileVersion",
+					"label": "Data file version",
+					"definition": "The version of the dataset (the actual data).",
+					"example": "1.0",
+					"format": "Software version number",
+					"required": true
+				}
+			]
+		},
+		{
+			"name": "BioMaterial",
+			"label": "Biological Material",
+			"definition": "The biological material being studied (e.g. plants grown from a certain bag or seed, or plants grown in a particular field). The original source of that material (e.g., the seeds or the original plant cloned) is called the material source, which, when held by a material repository, should have its stock identified.",
+			"attributes": [
+				{
+					"name": "BioMatID",
+					"label": "Biological material ID",
+					"definition": "Code used to identify the biological material in the data file. Should be unique within the Investigation. Can correspond to experimental plant ID, seed lot ID, etc...",
+					"example": "INRA:W95115_inra_2001; INRA:inra_kernel_2351; Rothamsted:rres_GK090847",
+					"format": "Unique identifier",
+					"required": true
+				},
+				{
+					"name": "Organism",
+					"label": "Organism",
+					"definition": "An identifier for the organism at the species level. Use of the NCBI taxon ID is recommended. ",
+					"example": "NCBI:4577 ",
+					"format": "Unique identifier",
+					"required": true
+				},
+				{
+					"name": "Genus",
+					"label": "Genus",
+					"definition": "Genus name for the organism under experiment, according to standard scientific nomenclature.",
+					"example": "Zea; Solanum",
+					"format": "Genus name"
+				},
+				{
+					"name": "Species",
+					"label": "Species",
+					"definition": "Species name for  the organism under experiment, according to standard scientific nomenclature.",
+					"example": "mays; lycosperium x pennellii",
+					"format": "Species name"
+				},
+				{
+					"name": "BioMatLatitude",
+					"label": "Biological material latitude",
+					"definition": "Latitude of the studied biological material. [Alternative identifier for in situ material]",
+					"example": "+39.067",
+					"format": "Degrees in the decimal format (ISO 6709)"
+				},
+				{
+					"name": "BioMatLongitude",
+					"label": "Biological material longitude",
+					"definition": "Longitude of the studied biological material. [Alternative identifier for in situ material]",
+					"example": "-8.73",
+					"format": "Degrees in the decimal format (ISO 6709)"
+				},
+				{
+					"name": "BioMatAltitude",
+					"label": "Biological material altitude",
+					"definition": "Altitude of the studied biological material, preferably provided in metres (m). [Alternative identifier for in situ material]",
+					"example": "10m",
+					"format": "Numeric"
+				},
+				{
+					"name": "BioMatCoordUncertainty",
+					"label": "Biological material coordinates uncertainty",
+					"definition": "Circular uncertainty of the coordinates, preferably provided in meters (m). [Alternative identifier for in situ material]",
+					"example": "200m",
+					"format": "Numeric"
+				},
+				[
+					{
+						"name": "BioMatPreprocessing",
+						"label": "Biological material preprocessing",
+						"definition": "Description of any process or treatment applied uniformely to the biological material, prior to the experiment itself. Can be provided as free text or as an accession number from a suitable controlled vocabulary.",
+						"example": "EO:0007210 - PVY(NTN); transplanted from experiment http://phenome-fppn.fr/maugio/2013/t2351 observation unit ID : pot:894",
+						"format": "Plant Environment Ontology and/or free text"
+					}
+				],
+				{
+					"name": "MatSourceID",
+					"label": "Material source ID (Holding institute/stock centre, accession)",
+					"definition": "An identifier for the source of the biological material, in the form of a key-value pair comprising the name/identifer of the repository from which the material was sourced plus the accession number of the repository for that material. Where an accession number has not been assigned, but the material has been derived from the crossing of known accessions, the material can be defined as follows: mother_accession X father_accession, or, if father is unknown, as mother_accession X UNKNOWN. For in situ material, the region of provenance may be used when an accession is not available.",
+					"example": "INRA:W95115_inra; ICNF:PNB-RPI .",
+					"format": "Unique identifier"
+				},
+				{
+					"name": "MatSourceDOI",
+					"label": "Material source DOI",
+					"definition": "Digital Object Identifier (DOI) of the material source",
+					"example": "doi:10.15454/1.4658436467893904E12",
+					"format": "DOI"
+				},
+				{
+					"name": "MatSourceLatitude",
+					"label": "Material source latitude",
+					"definition": "Latitude of the material source. [Alternative identifier for in situ material]",
+					"example": "+39.067",
+					"format": "Degrees in the decimal format (ISO 6709)"
+				},
+				{
+					"name": "MatSourceLongitude",
+					"label": "Material source longitude",
+					"definition": "Longitude of the material source. [Alternative identifier for in situ material]",
+					"example": "-8.73",
+					"format": "Degrees in the decimal format (ISO 6709)"
+				},
+				{
+					"name": "MatSourceAltitude",
+					"label": "Material source altitude",
+					"definition": "Altitude of the material source, preferably provided in metres (m). [Alternative identifier for in situ material]",
+					"example": "10m",
+					"format": "Numeric"
+				},
+				{
+					"name": "MatSourceCoordUncertainty",
+					"label": "Material source coordinates uncertainty",
+					"definition": "Circular uncertainty of the coordinates, preferably provided in meters (m). [Alternative identifier for in situ material]",
+					"example": "200m",
+					"format": "Numeric"
+				},
+				{
+					"name": "MatSourceDescription",
+					"label": "Material source description",
+					"definition": "Description of the material source",
+					"example": "Branches were collected from a 10-year-old tree growing in a progeny trial established in a loamy brown earth soil",
+					"format": "Free text"
+				}
+			]
+		},
+		{
+			"name": "EnviroParam",
+			"label": "Environmental Parameter",
+			"definition": "An environmental parameter or experimental condition that was kept constant throughout the experiment and did not change betweeen observation units or assays.",
+			"attributes": [
+				{
+					"name": "EnvParameter",
+					"label": "Environment parameter",
+					"definition": "Name of the environment parameter",
+					"example": "List environmental parameters in attachment to main MIAPPE table.Examples: air temperature; rooting medium; medium composition; plot size",
+					"format": "Free text (see Appendix I)"
+				},
+				{
+					"name": "Value",
+					"label": "Environment parameter value",
+					"definition": "Value of the environment parameter.",
+					"example": "Value for each of the above parameters.Examples: 22 °C; Ca: 5 mg/L",
+					"format": "Free text"
+				}
+			]
+		},
+		{
+			"name": "Factor",
+			"definition": "The object of a experiment is to ascertain the impact of one or more factors on the biological material. Thus, a factor is, by definition a condition that varies between observation units, which may be biotic (pest, disease interaction) or abiotic (treatment and cultural practice) in nature.",
+			"attributes": [
+				{
+					"name": "FactorType",
+					"label": "Factor type",
+					"definition": "Name/Acronym of the factor.",
+					"example": "Watering",
+					"format": "Free text (see Appendix II)",
+					"required": true
+				},
+				{
+					"name": "FactorDesc",
+					"label": "Factor description",
+					"definition": "Free text description of the factor. This include all relevant treatments planificaito and protocole considered for all the plant targeted by a given factor.",
+					"example": "Daily watering 1L per plant. ",
+					"format": "Free text"
+				},
+				[
+					{
+						"name": "FactorValues",
+						"label": "Factor values",
+						"definition": "List of possible values for the factor.",
+						"example": "Watered; Unwatered",
+						"format": "Free text"
+					}
+				]
+			]
+		},
+		{
+			"name": "Event",
+			"definition": "An event is discrete occurrence at a particular time in the experiment (which can be natural, such as rain, or unnatural, such as planting, watering, etc). Events may be the realization of Factors or parts of Factors, or may be confounding to Factors. Can be applied at the whole experiment level or to only a subset of observation units.",
+			"attributes": [
+				{
+					"name": "EventType",
+					"label": "Event type",
+					"definition": "Short name of the event.",
+					"example": "Planting; Watering; Fertilizing; Herbicide",
+					"format": "Free text (short)",
+					"required": true
+				},
+				{
+					"name": "EventAcession",
+					"label": "Event acession number",
+					"definition": "Accession number of the event type in a suitable controlled vocabulary (Crop Ontology) if available.",
+					"example": "CO_715:0000011; CO_715:0000007 ",
+					"format": "Crop Ontology term (subclass of CO_715:0000006)"
+				},
+				{
+					"name": "EventDesc",
+					"label": "Event description",
+					"definition": "Description of the event, including details such as amount applied and possibly duration of the event. ",
+					"example": "Grafting; Fertilizer application, Ammonium nitrate at 3 kg/m2; sowing ",
+					"format": "Free text"
+				},
+				[
+					{
+						"name": "EventDateTime",
+						"label": "Event date",
+						"definition": "Date and time of the event.",
+						"example": "2006-09-27T10:23:21+00:00;2006-10-27T10:23:21+00:00;2006-02-13T10:23:21+00:00",
+						"format": "Date/Time (ISO 8601, optional time zone)"
+					}
+				]
+			]
+		},
+		{
+			"name": "ObsUnit",
+			"label": "Observation Unit",
+			"definition": "Observation units are objects that are subject to particular instances of observsation and measurement. An observation unit comprises one or more plants, and their environment. Synonym : Experimental unit.",
+			"attributes": [
+				{
+					"name": "ObsUnitID",
+					"label": "Observation unit ID",
+					"definition": "Identifier used to identify the observation unit in data files containing the values observed or measured on that unit. Must be locally unique",
+					"example": "plot:894",
+					"format": "Unique identifier",
+					"required": true
+				},
+				{
+					"name": "ObsUnitType",
+					"label": "Observation unit type",
+					"definition": "Type of observation unit in textual form.",
+					"example": "block, sub-lock, plot, plant, trial, sample, pot, replication or replicate, individual, virtual_trial, unit-parcel",
+					"format": "Free text",
+					"required": true
+				},
+				[
+					{
+						"name": "ExternalID",
+						"label": "External ID",
+						"definition": "Identifier for the observation unit in a persistant repository, comprises the name of the repository and the identifier of the observation unit therein. The EBI Biosamples repository is recommended. ",
+						"example": "Biosamples: SAMEA4202911",
+						"format": "Unique identifier"
+					}
+				],
+				[
+					{
+						"name": "ObsUnitFactorVals",
+						"label": "Observation Unit factor value",
+						"definition": "List of values for each factor applied to the observation unit.",
+						"example": "Watered",
+						"format": "Free text"
+					}
+				],
+				{
+					"SpatialDistrib": [{ "$ref": "#/models/SpatialCoord" }]
+				},
+				{
+					"BioMaterials": [{ "$ref": "#/models/BioMaterial" }]
+				},
+				{
+					"Factors": [{ "$ref": "#/models/Factor" }]
+				},
+				{
+					"Events": [{ "$ref": "#/models/Event" }]
+				},
+				{
+					"Samples": [{ "$ref": "#/models/Sample" }]
+				}
+			]
+		},
+		{
+			"name": "SpatialCoord",
+			"definition": "Type and value of a spatial coordinate (georeference or relative) or level of observation (plot 45, subblock 7, block 2) provided as a key-value pair of the form [type] value. Levels of observation must be consistent with those listed in the MiappeExp section.",
+			"attributes": [
+				{
+					"name": "SPKey",
+					"label": "Key",
+					"definition": "The Type of a spatial coordinate entry, which pairs with a value to give a full Spatial Coordinate point.",
+					"example": "Latitude, row, X, Y, Block, Plot (one per key entry)",
+					"format": "Free text",
+					"required": true
+				},
+				{
+					"name": "SPValue",
+					"label": "Value",
+					"definition": "The Value of a spatial coordinate entry, which pairs with a Type to give a full Spatial Coordinate point.",
+					"example": "894",
+					"format": "Free text",
+					"required": true
+				}
+			]
+		},
+		{
+			"name": "Sample",
+			"definition": "A sample is a portion of plant tissue extracted from an observation unit for the purpose of sub-plant observations and/or molecular studies.",
+			"attributes": [
+				{
+					"name": "SampleID",
+					"label": "Sample ID",
+					"definition": "Unique identifier for the sample.",
+					"example": "CEA:BE00034067",
+					"format": "Unique identifier",
+					"required": true
+				},
+				{
+					"name": "PlantDevStage",
+					"label": "Plant structure development stage",
+					"definition": "The stage in the life of a plant structure during which the sample was taken, in the form of an accession number to a suitable controlled vocabulary (Plant Ontology, BBCH scale)",
+					"example": "PO:0025094;BBCH-17",
+					"format": "Plant Ontology term (subclass or PO:0009012) or BBCH scale term"
+				},
+				{
+					"name": "PlantAnatomicalEntity",
+					"label": "Plant anatomical entity",
+					"definition": "A description of  the plant part (e.g. leaf) or the plant product (e.g. resin) from which the sample was taken, in the form of an accession number to a suitable controlled vocabulary (Plant Ontology).",
+					"example": "PO:0000003;PO:0025161",
+					"format": "Plant Ontology term (subclass of PO:0025131)",
+					"required": true
+				},
+				{
+					"name": "SampleDesc",
+					"label": "Sample description",
+					"definition": "Any information not captured by the other sample fields, including quantification, sample treatments and processing.",
+					"example": "Distal part of the leaf ; 100mg of roots taken from 10 roots at 20°C, conserved in vacuum at 20mM NaCl salinity, stored at -60 °C to -85 °C.",
+					"format": "Free text"
+				},
+				{
+					"name": "CollectionDate",
+					"label": "Collection date",
+					"definition": "The date and time when the sample was collected / harvested",
+					"example": "2005-08-15T15:52:01+00:00",
+					"format": "Date/Time",
+					"required": true
+				},
+				[
+					{
+						"name": "ExternalID",
+						"label": "External ID",
+						"definition": "An identifier for the sample in a persistant repository, comprising the name of the repository and the accession number of the observation unit therein. Submission to the EBI Biosamples repository is recommended",
+						"example": "Biosamples:SAMEA4202911",
+						"format": "Unique identifier"
+					}
+				]
+			]
+		},
+		{
+			"name": "ObsVariable",
+			"label": "Observed Variable",
+			"definition": "An observed variable, typically taking the form of a measured characteristic of the observation unit (plant or environmental trait), associated to the method and unit of measurement.",
+			"attributes": [
+				{
+					"name": "VariableID",
+					"label": "Variable ID",
+					"definition": "Code used to identify the variable in the data file. We recommend using a variable definition from the Crop Ontology where possible. Otherwise, the Crop Ontology naming convention is recommended: <trait abbreviation>_<method abbreviation>_<scale abbreviation>). A variable ID must be unique within a given investigation.",
+					"example": "Ant_Cmp_Cday",
+					"format": "Unique identifier",
+					"required": true
+				},
+				{
+					"name": "VariableName",
+					"label": "Variable name",
+					"definition": "Name of the variable.",
+					"example": "Anthesis computed in growing degree days",
+					"format": "Free text"
+				},
+				{
+					"name": "VariableAccession",
+					"label": "Variable accession number",
+					"definition": "Accession number of the variable in the Crop Ontology (if available)",
+					"example": "CO_322:0000794",
+					"format": "Crop Ontology term"
+				},
+				{
+					"name": "Trait",
+					"label": "Trait",
+					"definition": "Name of the (plant or environmental) trait under observation",
+					"example": "Anthesis time; reproductive growth time",
+					"format": "Free text",
+					"required": true
+				},
+				{
+					"name": "TraitAccession",
+					"label": "Trait accession number",
+					"definition": "Accession number of the trait in a suitable controlled vocabulary (Crop Ontology, Trait Ontology).",
+					"example": "CO_322:0000030, TO:0000366",
+					"format": "Term from Plant Trait Ontology, Crop Ontology, or XML Environment Ontology"
+				},
+				{
+					"name": "Method",
+					"label": "Method",
+					"definition": "Name of the method of observation",
+					"example": "Growing degree days to anthesis",
+					"format": "Free text",
+					"required": true
+				},
+				{
+					"name": "MethodAccession",
+					"label": "Method accession number",
+					"definition": "Accession number of the method in a suitable controlled vocabulary (Crop Ontology, Trait Ontology).",
+					"example": "CO_322:0000189",
+					"format": "Term from Plant Trait Ontology, Crop Ontology, or XML Environment Ontology"
+				},
+				{
+					"name": "MethodDesc",
+					"label": "Method description",
+					"definition": "Textual description of the method, which may extend a method defined in an external reference with specific parameters, e.g. growth stage, inoculation precise organ (leaf number)",
+					"example": "1/ Days to anthesis for male flowering was measured in thermal time (GDD: growing degree-days) according to Ritchie J, NeSmith D (1991;Temperature and crop development. Modeling plant a nd soil systems American Society of Agronomy Madison, Wisconsin USA) with TBASE=8°C and T0=30°C.2/ Plant height was measured at 5 years with a ruler, one year after Botritis inoculation. ",
+					"format": "Free text"
+				},
+				{
+					"name": "MethodReference",
+					"label": "Reference associated to the method",
+					"definition": "URI/DOI of reference describing the method.",
+					"example": "http://doi.org/10.2134/agronmonogr31.c2",
+					"format": "URI or DOI"
+				},
+				{
+					"name": "Scale",
+					"label": "Scale",
+					"definition": "Name of the scale associated with the variable",
+					"example": "°C day",
+					"format": "Unique identifier",
+					"required": true
+				},
+				{
+					"name": "ScaleAccession",
+					"label": "Scale accession number",
+					"definition": "Accession number of the scale in a suitable controlled vocabulary (Crop Ontology).",
+					"example": "CO_322:0000510",
+					"format": "Crop Ontology term"
+				},
+				[
+					{
+						"name": "TimeScale",
+						"label": "Time scale",
+						"definition": "Name of the scale or unit of time with which observations of this type were recorded in the data file (for time series studies).",
+						"example": "Date/Time;Growing degree day (GDD) ",
+						"format": "Free text"
+					}
+				]
+			]
+		}
+	]
+}
