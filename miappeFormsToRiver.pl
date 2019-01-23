@@ -13,8 +13,8 @@ use Text::Slugify 'slugify';
 use constant false => \0;
 use constant true  => \1;
 
-my $url = "https://api.river.serenity-sb.io/";
-
+my $url = "http://localhost:3005/";
+# my $url = "https://api.river.serenity-sb.io/";
 # my $url = "https://api.tomorrowstodayslater.xyz/";
 
 my $response;

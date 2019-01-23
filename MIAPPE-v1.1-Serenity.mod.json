@@ -6,7 +6,7 @@
 	"models": [
 		{
 			"name": "Experiment",
-			"definition": "An experiment definition",
+			"definition": "An experiment definition.",
 			"attributes": [
 				{
 					"name": "ExpID",
@@ -18,7 +18,7 @@
 				{
 					"name": "ExpTitle",
 					"label": "Experiment title",
-					"definition": "Human-readable text summarising the experiment",
+					"definition": "Human-readable text summarising the experiment.",
 					"example": "2002 evaluation of flowering time for a panel of 375 maize lines at the experimental station of Maugio (France). ",
 					"format": "Free text (short)",
 					"required": true
@@ -26,14 +26,14 @@
 				{
 					"name": "Description",
 					"label": "Experiment description",
-					"definition": "Human-readable text describing the experiment",
+					"definition": "Human-readable text describing the experiment.",
 					"example": "2002 evaluation of male and female flowering time for a panel of 375 maize lines representing the worldwide genetic diversity at the experimental station of Maugio, France. ",
 					"format": "Free text"
 				},
 				{
 					"name": "StartDate",
 					"label": "Start date of experiment",
-					"definition": "Date and, if relevant, time when the experiment started",
+					"definition": "Date and, if relevant, time when the experiment started.",
 					"example": "2002-04-04; 2006-09-27T10:23:21+00:00",
 					"format": "Date/Time (ISO 8601, optional time zone)",
 					"required": true
@@ -41,7 +41,7 @@
 				{
 					"name": "EndDate",
 					"label": "End date of experiment",
-					"definition": "Date and, if relevant, time when the experiment ended",
+					"definition": "Date and, if relevant, time when the experiment ended.",
 					"example": "2002-11-27",
 					"format": "Date/Time (ISO 8601, optional time zone)"
 				},
@@ -120,7 +120,7 @@
 				{
 					"name": "ObsUnitHierarchy",
 					"label": "Observation unit level hierarchy",
-					"definition": "Hierarchy of the different levels of repetitions between each others",
+					"definition": "Hierarchy of the different levels of repetitions between each others.",
 					"example": "block>rep>plot",
 					"format": "Formatted text (level>level)"
 				},
@@ -221,7 +221,7 @@
 					{
 						"name": "Role",
 						"label": "Person role",
-						"definition": "Type of contribution of the person to the investigation",
+						"definition": "Type of contribution of the person to the investigation.",
 						"example": "data submitter; author; corresponding author",
 						"format": "Free text (short)"
 					}
@@ -230,7 +230,7 @@
 					{
 						"name": "Affiliation",
 						"label": "Person affiliation",
-						"definition": "The institution the person belongs to",
+						"definition": "The institution the person belongs to.",
 						"example": "ITQB, Portugal",
 						"format": "Free text (short)"
 					}
@@ -284,7 +284,7 @@
 				{
 					"name": "Organism",
 					"label": "Organism",
-					"definition": "An identifier for the organism at the species level. Use of the NCBI taxon ID is recommended. ",
+					"definition": "An identifier for the organism at the species level. Use of the NCBI taxon ID is recommended.",
 					"example": "NCBI:4577 ",
 					"format": "Unique identifier",
 					"required": true
@@ -350,7 +350,7 @@
 				{
 					"name": "MatSourceDOI",
 					"label": "Material source DOI",
-					"definition": "Digital Object Identifier (DOI) of the material source",
+					"definition": "Digital Object Identifier (DOI) of the material source.",
 					"example": "doi:10.15454/1.4658436467893904E12",
 					"format": "DOI"
 				},
@@ -385,7 +385,7 @@
 				{
 					"name": "MatSourceDescription",
 					"label": "Material source description",
-					"definition": "Description of the material source",
+					"definition": "Description of the material source.",
 					"example": "Branches were collected from a 10-year-old tree growing in a progeny trial established in a loamy brown earth soil",
 					"format": "Free text"
 				}
@@ -399,7 +399,7 @@
 				{
 					"name": "EnvParameter",
 					"label": "Environment parameter",
-					"definition": "Name of the environment parameter",
+					"definition": "Name of the environment parameter.",
 					"example": "List environmental parameters in attachment to main MIAPPE table.Examples: air temperature; rooting medium; medium composition; plot size",
 					"format": "Free text (see Appendix I)"
 				},
@@ -464,7 +464,7 @@
 				{
 					"name": "EventDesc",
 					"label": "Event description",
-					"definition": "Description of the event, including details such as amount applied and possibly duration of the event. ",
+					"definition": "Description of the event, including details such as amount applied and possibly duration of the event.",
 					"example": "Grafting; Fertilizer application, Ammonium nitrate at 3 kg/m2; sowing ",
 					"format": "Free text"
 				},
@@ -487,7 +487,7 @@
 				{
 					"name": "ObsUnitID",
 					"label": "Observation unit ID",
-					"definition": "Identifier used to identify the observation unit in data files containing the values observed or measured on that unit. Must be locally unique",
+					"definition": "Identifier used to identify the observation unit in data files containing the values observed or measured on that unit. Must be locally unique.",
 					"example": "plot:894",
 					"format": "Unique identifier",
 					"required": true
@@ -504,20 +504,14 @@
 					{
 						"name": "ExternalID",
 						"label": "External ID",
-						"definition": "Identifier for the observation unit in a persistant repository, comprises the name of the repository and the identifier of the observation unit therein. The EBI Biosamples repository is recommended. ",
+						"definition": "Identifier for the observation unit in a persistant repository, comprises the name of the repository and the identifier of the observation unit therein. The EBI Biosamples repository is recommended.",
 						"example": "Biosamples: SAMEA4202911",
 						"format": "Unique identifier"
 					}
 				],
-				[
-					{
-						"name": "ObsUnitFactorVals",
-						"label": "Observation Unit factor value",
-						"definition": "List of values for each factor applied to the observation unit.",
-						"example": "Watered",
-						"format": "Free text"
-					}
-				],
+				{
+					"ObsUnitFactorVals": [{ "$ref": "#/models/ObsUnitFactorValue" }]
+				},
 				{
 					"SpatialDistrib": [{ "$ref": "#/models/SpatialCoord" }]
 				},
@@ -525,13 +519,27 @@
 					"BioMaterials": [{ "$ref": "#/models/BioMaterial" }]
 				},
 				{
-					"Factors": [{ "$ref": "#/models/Factor" }]
-				},
-				{
 					"Events": [{ "$ref": "#/models/Event" }]
 				},
 				{
 					"Samples": [{ "$ref": "#/models/Sample" }]
+				}
+			]
+		},
+		{
+			"name": "ObsUnitFactorValue",
+			"definition": "A value applied to an observation unit for a given factor/treatment.",
+			"attributes": [
+				{
+					"Factor": { "$ref": "#/models/Factor" }
+				},
+				{
+					"name": "FactorValue",
+					"label": "Observation Unit factor value",
+					"definition": "A value applied to an observation unit for a given factor/treatment.",
+					"example": "Watered",
+					"format": "Free text",
+					"required": true
 				}
 			]
 		},
@@ -594,7 +602,7 @@
 				{
 					"name": "CollectionDate",
 					"label": "Collection date",
-					"definition": "The date and time when the sample was collected / harvested",
+					"definition": "The date and time when the sample was collected / harvested.",
 					"example": "2005-08-15T15:52:01+00:00",
 					"format": "Date/Time",
 					"required": true
@@ -603,7 +611,7 @@
 					{
 						"name": "ExternalID",
 						"label": "External ID",
-						"definition": "An identifier for the sample in a persistant repository, comprising the name of the repository and the accession number of the observation unit therein. Submission to the EBI Biosamples repository is recommended",
+						"definition": "An identifier for the sample in a persistant repository, comprising the name of the repository and the accession number of the observation unit therein. Submission to the EBI Biosamples repository is recommended.",
 						"example": "Biosamples:SAMEA4202911",
 						"format": "Unique identifier"
 					}
@@ -640,7 +648,7 @@
 				{
 					"name": "Trait",
 					"label": "Trait",
-					"definition": "Name of the (plant or environmental) trait under observation",
+					"definition": "Name of the (plant or environmental) trait under observation.",
 					"example": "Anthesis time; reproductive growth time",
 					"format": "Free text",
 					"required": true
@@ -655,7 +663,7 @@
 				{
 					"name": "Method",
 					"label": "Method",
-					"definition": "Name of the method of observation",
+					"definition": "Name of the method of observation.",
 					"example": "Growing degree days to anthesis",
 					"format": "Free text",
 					"required": true
@@ -684,7 +692,7 @@
 				{
 					"name": "Scale",
 					"label": "Scale",
-					"definition": "Name of the scale associated with the variable",
+					"definition": "Name of the scale associated with the variable.",
 					"example": "°C day",
 					"format": "Unique identifier",
 					"required": true

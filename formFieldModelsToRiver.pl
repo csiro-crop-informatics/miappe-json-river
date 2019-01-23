@@ -13,15 +13,15 @@ use Text::Slugify 'slugify';
 use constant false => \0;
 use constant true  => \1;
 
-my $url = "https://api.river.serenity-sb.io/";
-
+my $url = "http://localhost:3005/";
+# my $url = "https://api.river.serenity-sb.io/";
 # my $url = "https://api.tomorrowstodayslater.xyz/";
 
 ###################################################
 ## Insert term Attributes
 
 my %attIDs;
-foreach my $termAtt ( "term", "definition", "example", "format" ) {
+foreach my $termAtt ( "name", "term", "definition", "example", "format" ) {
     my %newAttr = (
         "name"     => $termAtt,
         "hasModel" => false,
@@ -45,6 +45,7 @@ my %termModel = (
     "name"       => "Terms",
     "attributes" => {
         "connect" => [
+            { "id" => $attIDs{"name"} },
             { "id" => $attIDs{"term"} },
             { "id" => $attIDs{"example"} },
             { "id" => $attIDs{"definition"} },
@@ -209,7 +210,7 @@ my %putFormFields = (
     }
 );
 
-my $formPutID = POSTdata( \%putFormFields, " _models/$formModelID", "PUT" );
+my $formPutID = POSTdata( \%putFormFields, "_models/$formModelID", "PUT" );
 if ( !$formPutID ) {
     die("Model 'Form' PUT failure\n");
 }

@@ -13,8 +13,8 @@ use Text::Slugify 'slugify';
 use constant false => \0;
 use constant true  => \1;
 
-my $url = "https://api.river.serenity-sb.io/";
-
+my $url = "http://localhost:3005/";
+# my $url = "https://api.river.serenity-sb.io/";
 # my $url = "https://api.tomorrowstodayslater.xyz/";
 
 my $envTermsFile   = "MIAPPE-v1.1_envParams.txt";
@@ -40,6 +40,9 @@ while (<ENVFILE>) {
                 "name" => $termid,
                 "data" => { "term" => $termName }
             );
+            if ( $def ne "" ) {
+                $newTerm{'data'}{'name'} = $termid;
+            }
             if ( $def ne "" ) {
                 $newTerm{'data'}{'definition'} = $def;
             }
@@ -75,6 +78,9 @@ while (<FACTFILE>) {
                 "name" => $termid,
                 "data" => { "term" => $termName }
             );
+            if ( $def ne "" ) {
+                $newTerm{'data'}{'name'} = $termid;
+            }
             if ( $def ne "" ) {
                 $newTerm{'data'}{'definition'} = $def;
             }
