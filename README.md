@@ -14,9 +14,12 @@ perl linkTermsToFields.pl
 
 Requires Perl modules:
 
--   Switch
--   LWP::UserAgent
--   HTTP::Request
--   JSON
--   Data::Dumper
--   Text::Slugify
+- Switch
+- LWP::UserAgent
+- HTTP::Request
+- JSON
+- Data::Dumper
+- Text::Slugify
+
+Alternatively, can now use:  
+`rivli vocab import -f river-miappe-full-230119.rl`
