@@ -192,7 +192,7 @@ id = 'cjrjvwjd405600a76myaom84f'
 name = 'Factor'
 type = 'Model'
 model = 'miappe-factor'
-is_array = true
+is_array = false
 
 [[models]]
 id = 'cjrjvwl2n05j20a76dyf5604i'
