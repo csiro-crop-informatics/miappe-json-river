@@ -217,6 +217,13 @@ sub POSTdata {
                 return $respHash->{'data'}->{'attribute'}->{'id'};
             }
         }
+        if ( defined( $respHash->{'data'}->{'updateModel'} ) ) {
+            if ( defined( $respHash->{'data'}->{'updateModel'}->{'id'} ) ) {
+                print "$apiSection ID = "
+                    . $respHash->{'data'}->{'updateModel'}->{'id'} . "\n\n";
+                return $respHash->{'data'}->{'updateModel'}->{'id'};
+            }
+        }
     }
     else {
         warn "$type failed!:\n";

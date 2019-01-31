@@ -278,16 +278,14 @@
 					"label": "Biological material ID",
 					"definition": "Code used to identify the biological material in the data file. Should be unique within the Investigation. Can correspond to experimental plant ID, seed lot ID, etc...",
 					"example": "INRA:W95115_inra_2001; INRA:inra_kernel_2351; Rothamsted:rres_GK090847",
-					"format": "Unique identifier",
-					"required": true
+					"format": "Unique identifier"
 				},
 				{
 					"name": "Organism",
 					"label": "Organism",
 					"definition": "An identifier for the organism at the species level. Use of the NCBI taxon ID is recommended.",
 					"example": "NCBI:4577 ",
-					"format": "Unique identifier",
-					"required": true
+					"format": "Unique identifier"
 				},
 				{
 					"name": "Genus",
@@ -489,16 +487,14 @@
 					"label": "Observation unit ID",
 					"definition": "Identifier used to identify the observation unit in data files containing the values observed or measured on that unit. Must be locally unique.",
 					"example": "plot:894",
-					"format": "Unique identifier",
-					"required": true
+					"format": "Unique identifier"
 				},
 				{
 					"name": "ObsUnitType",
 					"label": "Observation unit type",
 					"definition": "Type of observation unit in textual form.",
 					"example": "block, sub-lock, plot, plant, trial, sample, pot, replication or replicate, individual, virtual_trial, unit-parcel",
-					"format": "Free text",
-					"required": true
+					"format": "Free text"
 				},
 				[
 					{
@@ -574,8 +570,7 @@
 					"label": "Sample ID",
 					"definition": "Unique identifier for the sample.",
 					"example": "CEA:BE00034067",
-					"format": "Unique identifier",
-					"required": true
+					"format": "Unique identifier"
 				},
 				{
 					"name": "PlantDevStage",
@@ -589,8 +584,7 @@
 					"label": "Plant anatomical entity",
 					"definition": "A description of  the plant part (e.g. leaf) or the plant product (e.g. resin) from which the sample was taken, in the form of an accession number to a suitable controlled vocabulary (Plant Ontology).",
 					"example": "PO:0000003;PO:0025161",
-					"format": "Plant Ontology term (subclass of PO:0025131)",
-					"required": true
+					"format": "Plant Ontology term (subclass of PO:0025131)"
 				},
 				{
 					"name": "SampleDesc",
@@ -604,8 +598,7 @@
 					"label": "Collection date",
 					"definition": "The date and time when the sample was collected / harvested.",
 					"example": "2005-08-15T15:52:01+00:00",
-					"format": "Date/Time",
-					"required": true
+					"format": "Date/Time"
 				},
 				[
 					{
